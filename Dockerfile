@@ -1,4 +1,4 @@
-FROM node:4-onbuild
+FROM node:4.6-slim
 
 RUN mkdir /src
 
