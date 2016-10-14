@@ -1,6 +1,5 @@
 var express = require('express');
 var request = require('request');
-var time = require('time');
 
 var port = process.env.PORT || 8080;
 var app = express();
@@ -39,8 +38,7 @@ function daydiff(first, second) {
 }
 
 function getTimeRemaining(endtime) {
-    var now = new time.Date();
-    //now.setTimezone("Europe/Helsinki");
+    var now = new Date();
   var t = Date.parse(endtime) - Date.parse(now);
   if(t < 0) return null;
   var seconds = Math.floor((t / 1000) % 60);

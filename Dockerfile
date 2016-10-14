@@ -1,4 +1,8 @@
-FROM node:4.6-slim
+FROM node:4-onbuild
+
+ENV TZ=Europe/Helsinki
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN mkdir /src
 
