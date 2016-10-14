@@ -1,4 +1,4 @@
-FROM node:4-onbuild
+FROM mhart/alpine-node:latest
 
 ENV TZ=Europe/Helsinki
 
@@ -10,13 +10,13 @@ RUN npm install nodemon -g
 
 WORKDIR /src
 
+ADD config.js /src/config.js
+
 ADD howlong.js /src/howlong.js
 
 ADD package.json /src/package.json
 
 RUN npm install
-
-#ADD app/nodemon.json /src/nodemon.json
 
 EXPOSE 8080
 
