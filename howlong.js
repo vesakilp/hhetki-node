@@ -11,6 +11,11 @@ app.post('/howlong', function(req, res) {
     sendMessage(res);
 });
 
+app.get('/health', function(req, res) {
+    console.log('health check');
+    res.status(200).send();
+});
+
 //TODO read zero moment from conf file
 //TODO read request url from conf file
 //TODO read chatId from conf file
