@@ -16,11 +16,8 @@ app.get('/health', function(req, res) {
     res.status(200).send();
 });
 
-//TODO read zero moment from conf file
-//TODO read request url from conf file
-//TODO read chatId from conf file
 var sendMessage = function(res) {
-    var time = getTimeRemaining(config.dday);
+    var time = getTimeRemaining(config.dday_utc);
     console.log(time);
     var message = time !== null ? "Stockholm craft cruise: " + time.days + "d " + time.hours + "h " + time.minutes + "m " + time.seconds + "s" : "Bottoms up!";
     //var message = "Olutristeily countdown: Risteily peruttu tennisottelun johdosta. Lisätiedustelut Heikki Wilen, +358 40 7763100";
@@ -44,12 +41,9 @@ function daydiff(first, second) {
 }
 
 function getTimeRemaining(endtime) {
-    var tz = "Europe/Helsinki";
-    //var now = new Date();
-    //var now = new time.Date();
-    //now.setTimezone(tz);
-    var now = moment.tz(new Date(), tz).format();
-    var t = Date.parse(endtime) - Date.parse(now);
+    var now = moment().tz(config.tz);
+    var then = moment(endtime).tz(config.tz);
+    var t = then.diff(now)
     if(t < 0) return null;
     var seconds = Math.floor((t / 1000) % 60);
     var minutes = Math.floor((t / 1000 / 60) % 60);
@@ -63,7 +57,6 @@ function getTimeRemaining(endtime) {
     'seconds': seconds
     };
 }
-
 
 app.listen(port);
 console.log('Magic happens on port ' + port);

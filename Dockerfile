@@ -16,6 +16,8 @@ ADD howlong.js /src/howlong.js
 
 ADD package.json /src/package.json
 
+ADD nodemon.json /src/nodemon.json
+
 RUN npm install
 
 EXPOSE 8080
