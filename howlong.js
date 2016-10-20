@@ -23,7 +23,7 @@ var sendMessage = function(res) {
     countDownMsg += "\nSiljalla mennään, lähtee Olympiaterminaalista";
     countDownMsg += "\nIllalliselle pikkutakki";
     var doneMessage = "Bottoms up!"
-    var message = time !== null ? countDownMsg : doneMessage    ;
+    var message = time !== null ? countDownMsg : doneMessage;
     //var message = "Olutristeily countdown: Risteily peruttu tennisottelun johdosta. Lisätiedustelut Heikki Wilen, +358 40 7763100";
     var options = { method: 'POST',
       url: config.requestUrl,
