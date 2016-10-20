@@ -19,7 +19,11 @@ app.get('/health', function(req, res) {
 var sendMessage = function(res) {
     var time = getTimeRemaining(config.dday_utc);
     console.log(time);
-    var message = time !== null ? "Stockholm craft cruise: " + time.days + "d " + time.hours + "h " + time.minutes + "m " + time.seconds + "s" : "Bottoms up!";
+    var countDownMsg = "Stockholm craft cruise: " + time.days + "d " + time.hours + "h " + time.minutes + "m " + time.seconds + "s";
+    countDownMsg += "\nSiljalla mennään, lähtee Olympiaterminaalista";
+    countDownMsg += "\nIllalliselle pikkutakki";
+    var doneMessage = "Bottoms up!"
+    var message = time !== null ? countDownMsg : doneMessage    ;
     //var message = "Olutristeily countdown: Risteily peruttu tennisottelun johdosta. Lisätiedustelut Heikki Wilen, +358 40 7763100";
     var options = { method: 'POST',
       url: config.requestUrl,
